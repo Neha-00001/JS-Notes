@@ -67,6 +67,17 @@ Correct:
 This means:
 React, here is the function. Call it when the button is clicked.
 This is why understanding functions as values is so important.
+
+
+11.undefined → missing value
+
+NaN → invalid numerical result
+
+12.callback means  a function passed to another function
+
+13. greet() → execute
+
+greet   → function itself / pass the functions
     
 
 
