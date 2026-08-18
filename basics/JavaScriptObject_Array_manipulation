@@ -1,0 +1,231 @@
+# JavaScript Object & Array Manipulation — Revision Notes
+
+1. **Java vs JavaScript Objects**
+
+   Java → Class first → create objects from it.
+
+   JavaScript → Can directly create objects using `{}`
+   OR → Can use classes when needed.
+
+   **Using a class is possible in JS, but not mandatory.**
+
+2. **Object Literals**
+
+   * Object created directly using `{}` is called an **Object Literal**.
+   * No class is required.
+
+   Syntax:
+
+   `const objectName = { property: value, property: value };`
+
+   Example:
+
+   `const student = {`
+   `    name: "Neha",`
+   `    age: 23,`
+   `    branch: "Computer Engineering"`
+   `};`
+
+   **Changing a property:**
+
+   `student.age = 24;`
+
+   **Adding a new property:**
+
+   `student.city = "Pune";`
+
+3. **Object Destructuring ⭐**
+
+   * Takes properties from an object and stores them directly in variables.
+   * Uses **property names**.
+
+   `const student = {`
+   `    name: "Neha",`
+   `    age: 23`
+   `};`
+
+   `const { name, age } = student;`
+
+   Here:
+
+   `name → student.name`
+   `age → student.age`
+
+   **Renaming variables:**
+
+   `const { name: studentName, age: studentAge } = student;`
+
+   **React:**
+
+   `function User({ name, age }) {`
+   `}`
+
+   This is destructuring `props` directly.
+
+4. **Array Destructuring ⭐**
+
+   * Takes values from an array and stores them in variables.
+   * Unlike objects, it uses **position/order**, not property names.
+
+   `const numbers = [10, 20, 30];`
+
+   `const [first, second] = numbers;`
+
+   `first → 10`
+   `second → 20`
+
+   **Object:** `{}` → property name matters
+   **Array:** `[]` → position matters
+
+5. **Swapping Values**
+
+   `let a = 10;`
+   `let b = 20;`
+
+   `[a, b] = [b, a];`
+
+   Result:
+
+   `a → 20`
+   `b → 10`
+
+6. **Spread Operator `...` ⭐⭐⭐**
+
+   `...` → "take everything inside and spread it here"
+
+   **Array copy:**
+
+   `const numbers = [10, 20, 30];`
+   `const copy = [...numbers];`
+
+   Creates a **new array**.
+
+   **Merge arrays:**
+
+   `const a = [1, 2];`
+   `const b = [3, 4];`
+   `const result = [...a, ...b];`
+
+   `result → [1, 2, 3, 4]`
+
+   **Add elements:**
+
+   `const newNumbers = [...numbers, 30];`
+
+   `→ [10, 20, 30, 30]`
+
+   **Object copy:**
+
+   `const copy = { ...student };`
+
+   **Add property:**
+
+   `const updatedStudent = {`
+   `    ...student,`
+   `    city: "Pune"`
+   `};`
+
+   **Update property:**
+
+   `const updatedStudent = {`
+   `    ...student,`
+   `    age: 24`
+   `};`
+
+   Original object remains unchanged.
+
+7. **Why Spread is Important in React ⭐⭐⭐**
+
+   Instead of directly modifying an existing object:
+
+   `student.age = 24;`
+
+   Create a new object:
+
+   `const updatedStudent = {`
+   `    ...student,`
+   `    age: 24`
+   `};`
+
+   React commonly uses this approach when updating state.
+
+8. **Spread vs Destructuring**
+
+   **Destructuring → takes things OUT**
+
+   `const { name, age } = student;`
+
+   `Object → variables`
+
+   **Spread → spreads/copies things INTO another object/array**
+
+   `const newStudent = { ...student };`
+
+   `Object → another object`
+
+9. **Shallow Copy ⭐**
+
+   Spread creates a **shallow copy**.
+
+   * Top-level properties/elements → copied.
+   * Nested objects/arrays → still shared.
+
+   `...` → shallow copy, not deep copy.
+
+10. **`.map()` ⭐⭐⭐**
+
+**Purpose:** Transform **every element** and create a new array.
+
+`const numbers = [1, 2, 3];`
+
+`const doubled = numbers.map(num => num * 2);`
+
+`doubled → [2, 4, 6]`
+
+Mental model:
+
+`map() → take every item → transform it → put result in new array`
+
+* `map()` does not modify the original array.
+* The callback's returned value becomes an element of the new array.
+
+**React:** Commonly used to render lists.
+
+`users.map(user => <li>{user.name}</li>)`
+
+11. **`.filter()` ⭐⭐⭐**
+
+**Purpose:** Select elements that satisfy a condition.
+
+`const numbers = [1, 2, 3, 4];`
+
+`const even = numbers.filter(num => num % 2 === 0);`
+
+`even → [2, 4]`
+
+Mental model:
+
+`filter() → check every item → true = keep → false = remove`
+
+* `filter()` does not modify the original array.
+* Callback should return `true` or `false`.
+
+12. **`map()` vs `filter()` ⭐⭐⭐**
+
+`map()` → **CHANGE / TRANSFORM every item**
+
+`const result = numbers.map(num => num * 2);`
+
+`[1, 2, 3] → [2, 4, 6]`
+
+`filter()` → **CHOOSE / SELECT some items**
+
+`const result = numbers.filter(num => num > 1);`
+
+`[1, 2, 3] → [2, 3]`
+
+**Easy memory:**
+
+`map → Modify`
+
+`filter → Select`
