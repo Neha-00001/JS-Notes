@@ -1,0 +1,36 @@
+# Variables & Scope — Quick Notes
+
+1. `let`, `const`, `var`
+
+`let` → can reassign, block-scoped
+`const` → cannot reassign, block-scoped
+`var` → function-scoped, old style → generally avoid
+
+⭐ Use `const` by default; `let` when reassignment is needed.
+
+2. Scope
+
+Scope = where a variable can be accessed.
+
+`let` / `const` → block scope `{ }`
+`var` → function scope
+
+Inner scope can access outer variables, but outer scope cannot access inner variables.
+
+3. Hoisting
+
+Hoisting = declarations are processed before execution.
+
+Function declaration → can be called before declaration.
+
+`var` → hoisted as `undefined`
+
+`let` / `const` → cannot be accessed before declaration → **TDZ (Temporal Dead Zone)**.
+
+⭐ Remember:
+
+`const` → default
+`let` → reassignment
+`var` → avoid
+Scope → accessibility
+Hoisting → declaration processed before execution
